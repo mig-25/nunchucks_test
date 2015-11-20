@@ -1,147 +1,22 @@
-// susy
-@import "bower_components/susy/sass/susy";
-
-// breakpoints-sass
-@import "bower_components/breakpoint-sass/stylesheets/_breakpoint.scss";
-
 @import "reset";
+@import "components";
 
+$blue:#0004FF;
+$red:#FF0004;
 
-$susy: (
-  flow: ltr, // ltr | rtl
-  output: float, // float | isolate
-  math: fluid, // fluid | static (requires column-width)
-  column-width: false, // false | value
-  container: 700px, // length or % | auto
-  container-position: center, // left | center | right | <length> [*2] (grid padding)
-  last-flow: to,
-  columns: 12,
-  gutters: 1/4,
-  gutter-position: after, // before | after | split | inside | inside-static (requires column-width)
-  global-box-sizing: border-box, // content-box | border-box (affects inside/inside-static)
-  debug: (
-    image: show,
-    color: rgba(#66f, .25),
-    output: overlay, // background | overlay
-    toggle: top left,
-  ),
-);
+$my_font_size:1.5em;
 
-$gallery_layout: layout( 12 .125 fluid float after);
+$my_padding:2%;
 
-$nav_layout: layout( 12 0 fluid float inside);
-
-$golden_layout: layout( (1 1.618 2.618) .1 fluid float split);
-
-$tablet:600px;
-$desktop:980px;
-
-*, *:before, *:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
- }
-
- img {
-  width: 100%;
-  height: auto;
- }
- ul, li {
-  list-style: none;
-  margin: 0;
-  padding: 0;   
- }
-
-nav {
-  margin: 10px 0;
-  text-align: center;
-  li {
-    background: #eee;
-  }
-  a {
-    display: block;
-    &:hover {
-      background: #ddd;
-    }
-  }
+h1{
+    color:$red;
 }
 
-
-.page {
-  @include container;
-}
-header {
-  @include full;
-  .logo {
-    @include span(3);
-  }
-  .company-name {
-    @include span(last 7);
-  }
-
-  nav {
-    @include full;
-  }
-  .nav-item {
-    @include span(3 of $nav_layout);
-  }
+h2{
+  color:$blue;
 }
 
-.hero {
-  @include full;
-  .why-we-love {
-    @include span(5);
-  }
-  .about-pandas {
-    @include span(last 7);
-  }
-  .in-the-wild {
-    @include span(3 of 7);
-  }
-  .in-the-zoo {
-    @include span(last 4 of 7);
-  }
-  .in-the-media {
-    @include span(7 of 7); 
-    img {
-      @include span(2 of 7);
-    }
-    .copy {
-      @include span(last 5 of 7);
-    }
-  }
+.myDiv p{
+    padding:$my_padding;
+  font-size:$my_font_size;
 }
-
-.panda-gallery {
-  @include full;
-  div {
-    @include with-layout($gallery_layout) {
-      @include gallery(4);
-      margin-bottom: gutter();
-    }
-  }
-}
-
-footer {
-  @include with-layout($golden-layout) {
-    .panda-links {
-      @include span(1 at 1);
-    }
-    .panda-social {
-      @include span(1 at 2);
-    }
-      .social-link {
-        @include span(3 of 6 .25 inside);
-      }
-    .panda-partners {
-      @include span(1 at 3);
-      img {
-        @include span(50% of 2 0);
-      }
-    }
-  }
-}
-
-
-
-
