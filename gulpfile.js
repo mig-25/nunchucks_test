@@ -35,6 +35,20 @@ function customPlumber(errTitle) {
   });
 }
 
+gulp.task('nunjucks', function() {
+  nunjucksRender.nunjucks.configure(['app/templates/'], {watch: false});
+  return gulp.src('app/pages/**/*.+(html|nunjucks)')
+    .pipe(customPlumber('Error Running Nunjucks'))
+    .pipe(data(function() {
+      return JSON.parse(fs.readFileSync('./app/data.json'))
+    }))
+    .pipe(nunjucksRender())
+    .pipe(gulp.dest('app'))
+    .pipe(browserSync.reload({
+      stream: true
+    }))
+});
+
 
 gulp.task('sass', function() {
   return gulp.src('app/scss/**/*.+(scss|sass)') // Gets all files ending with .scss or .sass in app/scss
@@ -52,10 +66,17 @@ gulp.task('sass', function() {
 });
 
 
-gulp.task('watch', ['browserSync', 'sass'], function() {
-  gulp.watch('app/scss/**/*.+(scss|sass)', ['sass']);
-  gulp.watch('app/index.html', browserSync.reload);
+gulp.task('watch', ['browserSync', 'nunjucks', 'sass'], function() {
+gulp.watch([
+    'app/templates/**/*'
+    'app/pages/**/*.+(html|nunjucks)'
+    'app/data.json'
+    ], ['nunjucks'] // runs Nunjucks task
+  )
+gulp.watch('app/scss/**/*.+(scss|sass)', ['sass']);
+gulp.watch('app/index.html', browserSync.reload);
 });
+
 
 gulp.task('prod', function(){
  var html=gulp.src('app/*.html')
