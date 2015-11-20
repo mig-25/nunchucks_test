@@ -1,0 +1,29 @@
+@import "components";
+
+$blue:#0004FF;
+$red:#FF0004;
+
+$my_font_size:1.5em;
+
+$my_padding:2%;
+
+h1{
+    color:$red;
+}
+
+h2{
+  color:$blue;
+}
+
+.myDiv p{
+    padding:$my_padding;
+  font-size:$my_font_size;
+}
+
+
+
+
+
+
+
+

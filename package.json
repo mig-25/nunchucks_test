@@ -1,0 +1,19 @@
+{
+  "name": "sass_tutorials",
+  "version": "1.0.0",
+  "description": "//Grund förutsättningar, se till att ha npm installerad på ditt system, du kan kontrollera detta genom npm -v in terminal. Gå genom alla prompter eller ändra dem saker du vill ändra på # Command Line npm init",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sohail",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.9.3",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.0.1",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.5.2",
+    "merge-stream": "^1.0.0"
+  }
+}
