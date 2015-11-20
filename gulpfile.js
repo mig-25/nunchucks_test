@@ -12,6 +12,8 @@ var browserSync = require('browser-sync');
 var merge = require('merge-stream');
 //Require Nunjucks Template Engine
 var nunjucksRender = require('gulp-nunjucks-render');
+// Plumber, Error handling
+var plumber = require('gulp-plumber');
 
 // Start browserSync server
 gulp.task('browserSync', function() {
@@ -23,9 +25,22 @@ gulp.task('browserSync', function() {
 });
 
 
+function customPlumber(errTitle) {
+  return plumber({
+    errorHandler: notify.onError({
+      // Customizing error title
+      title: errTitle || "Error running Gulp",
+      message: "Error: <%= error.message %>",
+    })
+  });
+}
+
+
 gulp.task('sass', function() {
   return gulp.src('app/scss/**/*.+(scss|sass)') // Gets all files ending with .scss or .sass in app/scss
     .pipe(sourcemaps.init()) // Initialize sourcemap plugin
+// Replacing plumber with customPlumber
+    .pipe(customPlumber('Error Running Sass'))
     .pipe(sass()) // Initialize sass
     .pipe(autoprefixer()) // Passes it through gulp-autoprefixer 
     .pipe(sourcemaps.write()) // Writing sourcemaps
