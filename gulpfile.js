@@ -14,6 +14,8 @@ var merge = require('merge-stream');
 var nunjucksRender = require('gulp-nunjucks-render');
 // Plumber, Error handling
 var plumber = require('gulp-plumber');
+//read JSON data
+var fs = require('fs');
 
 // Start browserSync server
 gulp.task('browserSync', function() {
