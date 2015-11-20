@@ -10,6 +10,8 @@ var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync');
 // Require merge-stream to output multilple tasks to multiple destinations
 var merge = require('merge-stream');
+//Require Nunjucks Template Engine
+var nunjucksRender = require('gulp-nunjucks-render');
 
 // Start browserSync server
 gulp.task('browserSync', function() {
