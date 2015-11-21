@@ -14,6 +14,8 @@ var merge = require('merge-stream');
 var nunjucksRender = require('gulp-nunjucks-render');
 // Plumber, Error handling
 var plumber = require('gulp-plumber');
+// Other requires
+var notify = require('gulp-notify');
 //read JSON data
 var fs = require('fs');
 
@@ -70,11 +72,11 @@ gulp.task('sass', function() {
 
 gulp.task('watch', ['browserSync', 'nunjucks', 'sass'], function() {
 gulp.watch([
-    'app/templates/**/*'
-    'app/pages/**/*.+(html|nunjucks)'
-    'app/data.json'
+    'app/templates/**/*',
+    'app/pages/**/*.+(html|nunjucks)',
+    'app/data.json',
     ], ['nunjucks'] // runs Nunjucks task
-  )
+  );
 gulp.watch('app/scss/**/*.+(scss|sass)', ['sass']);
 gulp.watch('app/index.html', browserSync.reload);
 });
