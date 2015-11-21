@@ -37,7 +37,7 @@ function customPlumber(errTitle) {
       // Customizing error title
       title: errTitle || "Error running Gulp",
       message: "Error: <%= error.message %>",
-        sound: "Glass"
+        sound: "Submarine"
     })
   });
 }
