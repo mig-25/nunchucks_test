@@ -16,6 +16,8 @@ var nunjucksRender = require('gulp-nunjucks-render');
 var plumber = require('gulp-plumber');
 // Other requires
 var notify = require('gulp-notify');
+//Read Data
+var data = require('gulp-data');
 //read JSON data
 var fs = require('fs');
 
